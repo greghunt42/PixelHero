@@ -1,0 +1,22 @@
+{
+  "name": "pixelhero",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://greghunt42@github.com/greghunt42/PixelHero.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/greghunt42/PixelHero/issues"
+  },
+  "homepage": "https://github.com/greghunt42/PixelHero#readme",
+  "dependencies": {
+    "express": "^4.16.4"
+  }
+}
