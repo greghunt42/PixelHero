@@ -1,0 +1,47 @@
+version: "3.2"
+services:
+  server:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    environment:
+      - ENVIRONMENT=DEV
+    volumes:
+      - .:/app
+    ports:
+      - "5000:5000"
+    networks:
+      - main
+    depends_on:
+      - db
+  web:
+    build:
+      context: ./web
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    networks:
+      - main
+  db:
+    image: postgres
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - MAX_CONNECTIONS=1000
+    ports:
+      - "5432"
+    networks:
+      - main
+  nginx:
+    image: nginx
+    volumes:
+      - ./web/static:/usr/share/nginx/web/static
+    ports:
+      - "4000:80"
+    networks:
+      - main
+    depends_on:
+      - server
+
+networks:
+  main:
